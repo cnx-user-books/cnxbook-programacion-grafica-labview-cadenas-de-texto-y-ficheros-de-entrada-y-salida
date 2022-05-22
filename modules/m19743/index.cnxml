@@ -1,0 +1,96 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VI para leer desde ficheros</title>
+  <metadata>
+  <md:content-id>m19743</md:content-id><md:title>VI para leer desde ficheros</md:title>
+  <md:abstract>En este ejercicio, se pretende construir un VI que lea datos desde un fichero. Completar los siguientes pasos para construir un VI que lea el fichero creado previamente y muestre la información leída en un string indicator.</md:abstract>
+  <md:uuid>6d6de119-91f4-4c84-a484-43fd621f119f</md:uuid>
+</metadata>
+
+<content>
+    <exercise id="e1">
+      <problem id="id20981798">
+	<section id="s1">
+	  <title>Panel Frontal</title>
+	  <list id="s1l1" list-type="enumerated"><item>
+Abrir un VI en blanco y construir el panel frontal mostrado en la <link target-id="s1l1f1"/> usando el control file path situado en la paleta <code>Controls&gt;&gt;Text Controls</code> y un indicador de cadena situado en la paleta <code>Controls&gt;&gt;Text
+	      Indicators</code>.
+	      <figure id="s1l1f1">
+		<media id="id20575428" alt=""><image src="../../media/filereader.png" mime-type="image/png"/></media>
+	      </figure>
+	    </item>
+	  </list>
+	</section>
+	<section id="s2">
+	  <title>Diagrama de Bloques</title>
+	  <list id="s2l1" list-type="enumerated"><item>
+	      Construir el diagrama de bloques según se muestra en la <link target-id="s2l1f1"/>.
+	      <figure id="s2l1f1">
+		<media id="id19848908" alt=""><image src="../../media/filereaderbd.png" mime-type="image/png"/></media>
+	      </figure>
+	      <list id="s2l1l1" list-type="enumerated"><item>
+		  <media id="id20299705" alt=""><image src="../../media/OpenFileIcon-1b1b.png" mime-type="image/png"/></media>
+
+Colocar en el diagrama de bloques el VI <code>Open/Create/Replace File</code>,
+situado en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;File I/O</code>. Este VI muestra una caja de diálogo para abrir o crear un fichero. Hacer clic con el botón derecho en la entrada <code>prompt</code>, seleccionar <code>Create&gt;&gt;Constant</code> en el menú contextual, y escribir <code>Select Filename</code> en la constante. Hacer clic con el botón derecho en la entrada <code>function</code>, seleccionar  <code>Create&gt;&gt;Constant</code> en el menú contextual, y hacer clic sobre la constante con la herramienta de operaciones y seleccionar <code>open</code>.
+		</item>
+		<item>
+		    <media id="id20294446" alt=""><image src="../../media/ReadFileIcon-d74d.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques la función <code>Read File</code>, situada en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;File
+		  I/O</code>. Esta función lee un número determinado de bytes (<code>count</code>) desde el fichero comenzando por el principio del fichero.
+		</item>
+		<item>
+		    <media id="id20983072" alt=""><image src="../../media/CloseFileIcon-a929.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques la función <code>Close File</code>, situada en la paleta 
+ <code>Functions&gt;&gt;All Functions&gt;&gt;File I/O</code>. Esta función cierra el fichero.
+		</item>
+		<item>
+		    <media id="id20302142" alt=""><image src="../../media/Error-7154.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques el VI <code>Simple Error
+		  Handler</code>, situado en la paleta
+		  <code>Functions&gt;&gt;All Functions&gt;&gt;Time &amp;
+		  Dialog</code>. Este VI chequea el cluster de error y muestra una caja de diálogo si ocurre un error.
+		</item>
+		<item>
+Completar el diagrama de bloques como se muestra en la
+ <link target-id="s2l1f1"/>.
+		</item>
+	      </list>
+	    </item>
+	    <item>
+	      Salvar el VI como <code>File Reader.vi</code> en el directorio
+	      <code>C:\Exercises\LabVIEW Basics I</code> directory.
+	    </item>
+	  </list>
+	</section>
+	<section id="s3">
+	  <title>Puesta en marcha del Instrumento Virtual</title>
+	  <list id="s3l1" list-type="enumerated"><item>
+Mostrar el panel frontal y usar la herramienta de operaciones para hacer clic sobre el botón <code>Browse</code> en el control path.
+	    </item>
+	    <item>
+Navegar hasta <code>demofile.txt</code> y hacer clic en el botón <code>Open</code> or <code>OK</code> button.
+	    </item>
+	    <item>
+Ejecutar el VI. <code>String Read from File</code> muestra el contenido del fichero.
+	    </item>
+	    <item>
+Si se dispone de tiempo, se puede completar el siguiente ejercicio <link target-id="s4">challenge step</link>. Si no salvar y cerrar el VI
+	    </item>
+	  </list>
+	</section>
+	<section id="s4">
+	  <title>Desafío</title>
+	  <list id="s4l1" list-type="enumerated"><item>
+Modificar el VI tal que extraiga el valor numérico y lo visualice en un indicador numérico. Una vez finalizado, salvar y cerrar el VI.
+	      <note id="id20568422" type="tip">
+Usar la función <code>Match Pattern</code> para buscar el primer carácter numérico
+	      </note>
+	    </item>
+	  </list>
+	</section>
+      </problem>
+    </exercise>
+
+  </content>
+  
+</document>

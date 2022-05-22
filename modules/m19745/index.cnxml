@@ -1,0 +1,176 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VI Registrador de temperatura</title>
+  <metadata>
+  <md:content-id>m19745</md:content-id><md:title>VI Registrador de temperatura</md:title>
+  <md:abstract>En este ejercicio, se pretende salvar datos a un fichero de forma se pueda acceder desde una hoja de cálculo o desde un procesador de texto. Completar los pasos siguientes para construir un VI que guarde la hora y la temperatura en un fichero de datos.</md:abstract>
+  <md:uuid>1d9ab637-671e-46b7-a7f1-6c5bb048c2c7</md:uuid>
+</metadata>
+
+<content>
+    <exercise id="e1">
+      <problem id="id10707933">
+	<section id="s1">
+	  <title>Block Diagram</title>
+	  <list id="s1l1" list-type="enumerated"><item>
+Abrir el Vi <link document="m12247">Temperature Control VI</link> y salvarlo como <code>Temperature Logger.vi</code> en el directorio <code>C:\Exercises\LabVIEW Basics I</code>. No hace falta modificar el panel frontal.
+	    </item>
+	    <item>
+Abrir y modificar el diagrama de bloques según se muestra en la <link target-id="s1l1f1"/>. Cambiar el tamaño del <code>bucle While</code> para añadir espacio en la parte superior para las operaciones de entrada/salida con ficheros.
+	      <figure id="s1l1f1">
+		<media id="id7889812" alt=""><image src="../../media/templogbd.png" mime-type="image/png"/></media>
+	      </figure>
+	      <list id="s1l1l1" list-type="enumerated"><item><!--needs para-->
+		    <media id="id7889841" alt=""><image src="../../media/OpenFileIcon-f08a.png" mime-type="image/png"/></media>
+		  <!--para-->
+Colocar en el diagrama de bloques el VI <code>Open/Create/Replace File</code>, situado en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;File I/O</code>. 
+<!--para-->
+Hacer clic con el botón derecho sobre la entrada <code>prompt</code>, seleccionar en el menú contextual la opción <code>Create Constant</code> y escribir <code>Enter File Name</code> en la constante. 
+		  <!--para-->
+Hacer clic con el botón derecho sobre la entrada <code>function</code>, seleccionar <code>Create Constant</code> en el menú contextual, y hacer clic sobre la constante con la herramienta de operaciones para seleccionar <code>create or replace</code>.
+		</item>
+		<item><!--needs para-->
+		    <media id="id8517914" alt=""><image src="../../media/gettmdtstrgicon.png" mime-type="image/png"/></media>
+		  <!--para-->
+Colocar en el diagrama de bloques la función <code>Get Date/Time
+		  String</code>, situada en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;Time &amp;
+		  Dialog</code>. Esta función devuelve la hora en formato cadena de texto cada vez que se mide la temperatura.  
+<!--para-->
+Hacer clic con el botón derecho en la entrada <code>want seconds?</code>, seleccionar en el menú contextual <code>Create&gt;&gt;Constant</code>, y hacer clic sobre dicha constante para cambiar el valor de <code>Falso</code> a <code>Verdadero</code>. Un valor de verdadero en la entrada <code>want seconds?</code> hace que la función incluya los segundos en la cadena de texto.
+		</item>
+		<item>
+		    <media id="id10652148" alt=""><image src="../../media/BuildIcon-13e1.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques el VI Express <code>Build Text</code>, situado en la paleta <code>Functions&gt;&gt;Output</code>. Este VI Express convierte las entradas a una cadena de texto. Aparece la caja de diálogo <code>Configure Build Text</code>.
+		  <list id="s1l1l1l1" list-type="enumerated">
+		    <item>
+En la caja de texto <code>Text with Variables in Percents</code> escribe la cadena <code>%tab%%temp%%end%</code> para fijar las tres variables; una para la constante tabulador, otra para la temperatura y otra para la constante fin de línea. Dado que el tiempo usa la entrada <code>Beginning Text</code> del VI Express <code>Build Text</code>, no se necesita ninguna variable.
+		    </item>
+		    <item>
+Seleccionar la temperatura en la sección <code>Configure
+		      Variables</code>. Seleccionar la opción <code>Number</code>, y un formato de <code>Format fractional number</code>. Las variables <code>tab</code> y <code>end</code> no necesitan ser formateadas. Se pueden dejar con su valor por defecto.
+		    </item>
+		    <item>
+Hacer clic sobre el botón <code>OK</code> para cerrar la caja de diálogo de configuración.
+		    </item>
+		    <item>
+Hacer clic con el botón derecho sobre el VI Express <code>Build Text</code> y seleccionar <code>View As Icon</code> para ahorrar espacio en el diagrama de bloques.
+		    </item>
+		  </list>
+		</item>
+		<item>
+		      <media id="id9934455" alt=""><image src="../../media/tabicon.png" mime-type="image/png"/></media>
+		      <media id="id9934463" alt=""><image src="../../media/eolicon.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques una <code>constate tabulador</code> y una <code>constante fin de línea</code>, situadas en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;String</code>.
+		</item>
+		<item>
+		    <media id="id9934505" alt=""><image src="../../media/WriteFileIcon-4c18.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques la función <code>Write File</code>, situada en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;File I/O</code>. Esta función escribe en el fichero especificado por <code>refnum</code>.
+		</item>
+		<item>
+		    <media id="id5152927" alt=""><image src="../../media/CloseFileIcon-6f44.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques la función <code>Close File</code>, situada en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;File I/O</code>. Esta función cierra el fichero.
+		</item>
+		<item>
+		    <media id="id5152962" alt=""><image src="../../media/Error-f276.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques el instrumento virtual <code>Simple Error
+		  Handler</code>, situado en la paleta 		  <code>Functions&gt;&gt;All Functions&gt;&gt;Time &amp;
+		  Dialog</code>. Este VI chequea el cluster de error y visualiza un mensaje de error si ocurriera un error.
+		</item>
+		<item>
+Completar el diagrama de bloques como se muestra en la <link target-id="s1l1f1"/>.
+		</item>
+	      </list>
+	    </item>
+	    <item>
+Salvar el VI. Este VI se usará más tarde en este curso.
+	    </item>
+	  </list>
+	</section>
+	<section id="s2">
+	  <title>Puesta en marcha del Instrumento Virtual</title>
+	  <list id="s2l1" list-type="enumerated"><item>
+Mostrar el panel frontal y ejecutar el VI. Se muestra la caja de diálogo <code>Enter
+	      File Name</code>.
+	    </item>
+	    <item><!--needs para-->
+	      <!--para-->
+Escribir <code>temp.txt</code> y hacer clic en el botón <code>Save</code> u <code>OK</code>.
+	      <!--para-->
+El VI crea un fichero llamado <code>temp.txt</code>. El VI va tomando lecturas cada medio segundo y salva los datos de hora y temperatura en el fichero hasta que se haga clic en el interruptor <code>Power</code>. Cuando el VI termina la ejecución, se cierra el fichero.
+	    </item>
+	    <item>
+Abrir un procesador de textos o una aplicación para hojas de calculo, tales como (<emphasis>Windows</emphasis>) Notepad, WordPad o UltraEdit, (<emphasis>Mac OS</emphasis>) SimpleText, o (<emphasis>UNIX</emphasis>) Text Editor.
+	    </item>
+	    <item>
+Abrir el fichero <code>temp.txt</code> con el procesador de texto o con la hoja de calculo. La hora aparece en la primera columna, y los datos de la temperatura aparecen en la segunda columna.
+	    </item>
+	    <item>
+Salir del procesador de texto o la hoja de cálculo y volver a LabVIEW.
+	    </item>
+	    <item>
+Si se dispone de tiempo, completar los siguientes pasos. En caso contrario cerrar el VI.
+	    </item>
+	  </list>
+	</section>
+	<section id="s3">
+	  <title>Optional</title>
+	  <para id="s3p1">Cuando se haga uso de gestión de errores en un VI, el <code>bucle While</code> debería parar ls ejecución cuando ocurre un error. Completa los pasos siguientes para modificar el VI de modo que se pare cuando el usuario hace clic sobre el interruptor de marcha u ocurra un error.
+	  </para>
+	  <list id="s3l1" list-type="enumerated"><item>
+Editar el diagrama de bloques como se muestra en la <link target-id="s3l1f1"/>.
+	      <figure id="s3l1f1">
+		<media id="id6984550" alt=""><image src="../../media/templogoptbd.png" mime-type="image/png"/></media>
+	      </figure>
+	      <list id="s3l1l1" list-type="enumerated"><item>
+		    <media id="id9594821" alt=""><image src="../../media/unbundle.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques la función <code>Unbundle by
+		  Name</code>, situada en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;Cluster</code>. Esta función lee la salida status del cluster de error.
+		</item>
+		<item>
+		      <media id="id9594859" alt=""><image src="../../media/not.png" mime-type="image/png"/></media>
+		      <media id="id9594868" alt=""><image src="../../media/andicon.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques las funciones <code>Not</code> y <code>And</code>, situadas en la paleta <code>Functions&gt;&gt;Arithmetic &amp;
+		  Comparison&gt;&gt;Express Boolean</code>. Estas funciones hacen que el <code>bucle While</code> continue ejecutándose mientras <code>Power</code> sea verdadero y no haya errores.
+		</item>
+	      </list>
+	    </item>
+	    <item>
+Salvar y ejecutar el VI.
+	    </item>
+	    <item>
+Testear el gestor de errores borrando la conexión <code>refnum</code> entre la función <code>Write
+	      File</code> y el lateral izquierdo del <code>bucle While</code>. Hacer clic con el botón derecho sobre la entrada <code>refnum</code> de la función <code>Write File</code> y elegir <code>Create&gt;&gt;Constant</code>.
+	    </item>
+	    <item>
+Ejecutar de nuevo el VI. El VI debería esperar la introducción de un camino, y a continuación parar inmediatamente con un error. Si la gestión de errores no hubiera sido incluida en este VI, el VI no informaría del error hasta que el usuario detuviera la ejecución.
+	    </item>
+	    <item>
+Si se dispone de tiempo, completar los siguientes pasos. De otro modo, cerrar el VI. No salvar los cambios.
+	    </item>
+	  </list>
+	</section>
+	<section id="s4">
+	  <title>Desafío</title>
+	  <list id="s4l1" list-type="enumerated"><item>
+Sustituir el VI Express <code>Build Text</code> y la función <code>Write File</code> con la función <code>Format
+	      Into File</code>.
+	    </item>
+	    <item>
+Ejecutar el VI.
+	    </item>
+	    <item>
+Cerrar el VI. No salvar los cambios.
+	    </item>
+	  </list>
+	</section>
+      </problem>
+    </exercise>
+	      
+		  
+
+		  
+
+  </content>
+  
+</document>

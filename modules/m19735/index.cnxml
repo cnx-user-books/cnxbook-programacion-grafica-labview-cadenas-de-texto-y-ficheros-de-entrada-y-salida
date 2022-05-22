@@ -1,0 +1,121 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Cadenas de texto</title>
+  <metadata>
+  <md:content-id>m19735</md:content-id><md:title>Cadenas de texto</md:title>
+  <md:abstract>En este módulo, se aprenderá a crear controles e indicadores para cadenas de texto.</md:abstract>
+  <md:uuid>715204a9-7a1a-4e9b-8c14-19008476d6a4</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">Una cadena de texto es una secuencia de caracteres ASCII ya sean visualizables o no. Las cadenas 
+proporcionan una forma de mostrar información independientemente de la plataforma utilizada.
+Los usos más comunes de las cadenas de texto son:
+      <list id="p1l1"><item>
+	  Crear simples mensajes de texto.
+	</item>
+	<item>
+	  Entregar datos numéricos a instrumentos como cadenas de caracteres para después convertir las cadenas en valores numéricos.
+	</item>
+	<item>
+	  Almacenar datos numéricos en disco. Para almacenar valores numéricos en un fichero ASCII, hay que convertir los valores numéricos en cadenas de texto antes de escribirlos en el fichero.
+	</item>
+	<item>
+Dar avisos o pedir datos al usuario mediante cajas de dialogo.
+	</item>
+      </list>
+    </para>
+    <para id="p2">En el panel frontal, las cadenas de texto aparecen como tablas, cajas de entrada de texto y etiquetas.
+    </para>
+    <section id="s1"><title>Crear String Controls e Indicators</title>
+      
+      <para id="s1p1">Utilizar los String Controls e Indicators situados en las paletas
+	<code>Controls&gt;&gt;Text Controls</code> y <code>Controls&gt;&gt;Text
+	Indicators</code> para simular cajas de entrada de texto y etiquetas. Usar la herramienta de operaciones o etiquetado para escribir o editar texto en un String Control. Usar la herramienta de posicionado para redimensionar el objeto cadena del panel frontal. Para minimizar el espacio que ocupa un objeto cadena, hacer clic con el botón derecho sobre el objeto y seleccionar en el menú desplegable la opción <code>Visible Items&gt;&gt;Scrollbar</code>.
+      </para>
+      <para id="s1p2">Hacer clic con el botón derecho sobre un String Control o Indicator en el panel frontal
+para seleccionar de entre los tipos de visualización mostrados en la <link target-id="s1t1"/>.
+La tabla también muestra un mensaje ejemplo para cada tipo de visualización.
+      </para>
+      <table id="s1t1" frame="all" summary="Tabla que explica los diferentes tipos de visualización para las cadenas de texto.">
+<tgroup cols="3" align="left" colsep="1" rowsep="1"><thead valign="top">
+	    <row>
+	      <entry align="center">Display Type</entry>
+	      <entry align="center">Description</entry>
+	      <entry align="center">Message</entry>
+	    </row>
+	  </thead>
+	  <tbody valign="top">
+	    <row>
+	      <entry>Normal Display</entry>
+	      <entry>
+		Muestra los caracteres imprimibles usando la fuente del control. Los caracteres no imprimibles aparecen generalmente como cajitas. Hay cuatro tipos de visualización.
+	      </entry>
+	      <entry>
+		<code>There are four display types. \ is a
+		backslash.</code>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>'\' Codes Display</entry>
+	      <entry>
+		Muestra códigos de backslash para todos los caracteres no visualizables.
+	      </entry>
+	      <entry>
+		<code>There\sare\sfour\sdisplay\s types.\n\\\sis\sa\sbackslash.</code>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>Password Display</entry>
+	      <entry>
+		Muestra un asterisco (*) por cada carácter incluidos los espacios.
+	      </entry>
+	      <entry>
+		<code>*************************** *******************</code>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>Hex Display</entry>
+	      <entry>
+		Muestra los valores ASCII de cada carácter en hexadecimal en vez del caracter propiamente.
+	      </entry>
+	      <entry>
+		<code>5468 6572 6520 6172 6520 666F 7572 2064 6973 706C 6179
+		2074 7970 6573 2E0A 5C20 6973 2061 2062 6163 6B73 6C61
+		7368 2E</code> 
+	      </entry>
+	    </row>
+	  </tbody>
+	
+
+
+
+</tgroup>
+</table>
+    </section>
+    <section id="s2">
+      <title>Tablas</title>
+      <para id="s2p1">Usar el control Table situado en la paleta <code>Controls&gt;&gt;All
+	Controls&gt;&gt;List &amp; Table</code> o el
+instrumento virtual <code>Express
+	Table</code> situado en la paleta <code>Controls&gt;&gt;Text
+	Indicators</code> para
+crear una tabla en el panel frontal. Cada celdilla en la tabla es una cadena, y cada cadena
+reside en una fila y una columna. Por lo tanto, una tabla es un visualizador para un array
+de cadenas de texto de 2 dimensiones. La ilustración mostrada en la <link target-id="f1"/>
+	muestra una tabla y todos sus elementos.
+      </para>
+      <figure id="f1"><media id="id46204121" alt=""><image src="../../media/tableparts.png" mime-type="image/png"/></media><caption>1. Celdillas apuntadas por los Índices, 2. Encabezamiento de las Columnas,
+	  3. Barra de desplazamiento Vertical, 4. Barra de desplazamiento Horizontal, 5. Encabezamiento de las Filas,
+	  6. Índice Horizontal, 7. Índice Vertical.
+	</caption></figure>
+      <para id="s2p2">Definir las celdillas de una tabla usando la herramienta <code>Operating</code> o la herramienta <code>Labeling</code> para seleccionar una celdilla y escribir el texto en su interior.
+      </para>
+      <para id="s2p3">La tabla visualiza un array de 2 dimensiones de cadenas de texto, así que para poder visualizar en la tabla un array numérico habrá que convertirlo en un array de caracteres de texto. Los indicadores 
+de fila y columna no se muestran automáticamente como en una hoja de calculo. Hay que 
+crear un array unidimensional de cadenas de texto para los encabezamientos de las filas y las columnas.
+      </para>
+    </section>
+      
+
+  </content> 
+</document>

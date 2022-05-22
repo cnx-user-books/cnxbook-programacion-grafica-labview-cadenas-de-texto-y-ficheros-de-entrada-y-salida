@@ -1,0 +1,101 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VI para escribir en ficheros</title>
+  <metadata>
+  <md:content-id>m19742</md:content-id><md:title>VI para escribir en ficheros</md:title>
+  <md:abstract>En este ejercicio, se pretente escribir datos a un fichero. Completar los siguientes pasos para construir un VI que concatene un texto, un valor numérico y otro texto y guarde estos datos en un fichero. En otro ejercicio, se construirá un VI que lea el contenido de un fichero y lo muestre al usuario.</md:abstract>
+  <md:uuid>d7136f39-f254-45f5-ae6e-273b8b49c5f6</md:uuid>
+</metadata>
+
+<content>
+    <exercise id="e1">
+      <problem id="id18147972">
+	<section id="s1">
+	  <title>Panel Frontal</title>
+	  <list id="s1l1" list-type="enumerated"><item>
+Abrir un VI en blanco y construir el panel frontal mostrado en la <link target-id="s1l1f1"/>.
+	      <figure id="s1l1f1">
+		<media id="id20263809" alt=""><image src="../../media/filewriter.png" mime-type="image/png"/></media>
+	      </figure>
+	      <list id="s1l1l1" list-type="enumerated">
+		<item>
+Colocar en el panel frontal un indicador de path situado en la paleta <code>Controls&gt;&gt;Text Indicators</code>. Este indicador muestra el path para el fichero de datos que se va a crear.
+		</item>
+		<item>
+Hacer clic con el botón derecho sobre el control <code>String to Write</code> y seleccionar <code>Visible Items&gt;&gt;Scrollbar</code> en el menú contextual para mostrar una barra de desplazamiento.
+		</item>
+	      </list>
+	    </item>
+	  </list>
+	</section>
+	<section id="s2">
+	  <title>Diagrama de Bloques</title>
+	  <list id="s2l1" list-type="enumerated"><item>
+Construir el diagrama de bloques mostrado en la <link target-id="s2l1f1"/>.
+	      <figure id="s2l1f1">
+		<media id="id21471109" alt=""><image src="../../media/filewriterbd.png" mime-type="image/png"/></media>
+	      </figure>
+	      <list id="s2l1l1" list-type="enumerated"><item>
+		    <media id="id22392638" alt=""><image src="../../media/buildstringicon.png" mime-type="image/png"/></media>
+
+Colocar en el diagrama de bloques el VI <code>Create String</code> del <link document="mex81">ejercicio anterior</link>. Seleccionar <code>Functions&gt;&gt;All Functions&gt;&gt;Select a VI</code> y navegar a <code>C:\Exercises\LabVIEW Basics
+		  I\Create String.vi</code>. Este subVI concatena las tres cadenas de entrada en una cadena combinada.
+		</item>
+		<item>
+		  <!--needs para--> 
+		  <media id="id23378560" alt=""><image src="../../media/OpenFileIcon-18d0.png" mime-type="image/png"/></media>
+		  <!--para--> 
+Colocar en el diagrama de bloques el VI <code>Open/Create/Replace File</code>, situado en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;File I/O</code>. Este VI muestra una caja de diálogo para abrir o crear un fichero. <!--para--> Hacer clic con el botón derecho del ratón en la entrada de <code>prompt</code>, seleccionar <code>Create&gt;&gt;Constant</code> en el menú contextual, y escribir <code>Enter Filename</code> en la constante. Cuando el VI se ejecuta, aparece una caja de diálogo de navegación de ficheros con <code>Enter Filename</code> como título de la ventana. <!--para--> 
+Hacer clic con el botón derecho del ratón en la entrada <code>function</code>, seleccionar <code>Create&gt;&gt;Constant</code> en el menú contextual, y hacer clic sobre la constante con la herramienta de operaciones para seleccionar <code>create
+		  or replace</code>.
+		</item>
+		<item>
+		    <media id="id21337723" alt=""><image src="../../media/WriteFileIcon-b84e.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques la función <code>Write File</code>, situada en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;File I/O</code>. Esta función escribe las cadenas concatenadas en el fichero.
+		</item>
+		<item>
+		    <media id="id21181110" alt=""><image src="../../media/CloseFileIcon-71a0.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques la función <code>Close File</code>, situada en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;File I/O</code>. Esta función cierra el fichero.
+		</item>
+		<item>
+		    <media id="id22371072" alt=""><image src="../../media/Error-6399.png" mime-type="image/png"/></media>
+Colocar en el diagrama de bloques el VI <code>Simple Error
+		  Handler</code>, situado en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;Time &amp;
+		  Dialog</code>. Esta función chequea el cluster de error y muestra una caja de diálogo si ocurre un error.
+		</item>
+		<item>
+Completar el diagrama de bloques como se muestra en la <link target-id="s2l1f1"/>.
+		</item>
+	      </list>
+	    </item>
+	    <item>
+	      Salvar el VI como <code>File Writer.vi</code> en el directorio <code>C:\Exercises\LabVIEW Basics I</code>.
+	    </item>
+	  </list>
+	</section>
+	<section id="s3">
+	  <title>Puesta en marcha del Instrumento Virtual</title>
+	  <list id="s3l1" list-type="enumerated"><item>
+Introducir valores en los controles del panel frontal y ejecutar el VI. Aparece la caja de diálogo <code>Enter Filename</code>.
+	    </item>
+	    <item><!--needs para-->
+	      <!--para-->
+Escribir <code>demofile.txt</code> y hacer clic sobre el botón <code>Save</code> u <code>OK</code> para salvar el fichero. 
+<!--para-->
+El VI escribe los valores <code>String to Write</code>,
+	      <code>Numeric to Write</code>, y <code>Unit to
+	      Write</code> en el fichero.
+	    </item>
+	    <item>
+	      Cerrar el VI.
+	    </item>
+	  </list>
+	</section>
+      </problem>
+    </exercise>
+	      
+
+  </content>
+  
+</document>

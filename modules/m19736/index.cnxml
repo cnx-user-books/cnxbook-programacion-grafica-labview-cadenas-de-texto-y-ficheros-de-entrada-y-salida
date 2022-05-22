@@ -1,0 +1,129 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Funciones para trabajar con Cadenas de Texto</title>
+  <metadata>
+  <md:content-id>m19736</md:content-id><md:title>Funciones para trabajar con Cadenas de Texto</md:title>
+  <md:abstract>En este módulo, se aprenderá a hacer uso de las funciones para trabajar con cadenas de texto.</md:abstract>
+  <md:uuid>537c6ec3-f3f7-42ce-8eb8-81dedaeff79d</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">Las funciones de String situadas en la paleta <code>Functions&gt;&gt;All
+      Functions&gt;&gt;String</code> se usan para 
+editar y manipular cadenas en el diagrama de bloques. Las funciones de String disponibles son las 
+siguientes:
+      <list id="p1l1" list-type="labeled-item"><item><label>String Length</label>
+	  
+	  
+	  Devuelve el número de caracteres (bytes) de la <emphasis>cadena</emphasis>, incluyendo los caracteres espacio. Por ejemplo, la función <code>String Length</code> devuelve una <emphasis>longitud</emphasis> de <emphasis>19</emphasis> para la siguiente cadena:
+
+	  <code id="id4948096" display="block">
+	    The quick brown fox
+	  </code>
+	</item>
+	<item><label>Concatenate Strings</label>
+	  
+
+Encadena cadenas de texto de entrada y arrays unidimensionales de cadenas de texto en 
+una única cadena de salida. Para las entradas del array, esta función encadena cada elemento 
+del array. Añadir entradas a la función haciendo clic con el botón derecho sobre la función
+y seleccionando Add Input en el menú contextual o también redimensionando la función.
+Por ejemplo, encadenar la cadena anterior con el siguiente <!--<cnxn target="array">-->array<!--</cnxn>--> de cadenas de texto:
+	  <table id="array" frame="all" summary="">
+	    <tgroup cols="5" align="left" colsep="1" rowsep="1">
+	      <tbody valign="top">
+		<row>
+		  <entry align="center"><code>jumped</code></entry>
+		  <entry align="center"><code>over</code></entry>
+		  <entry align="center"><code>the</code></entry>
+		  <entry align="center"><code>lazy</code></entry>
+		  <entry align="center"><code>dog.</code></entry>
+		</row>
+	      </tbody>
+	    </tgroup>
+	  </table>
+	  La función <code>Concatenate Strings</code> devuelve la siguiente cadena:
+	  <code id="id9305925" display="block">
+	    The quick brown fox jumped over the lazy dog.
+	  </code>
+	</item>
+	<item><label>String Subset</label>
+	  
+
+	  Devuelve la <emphasis>subcadena</emphasis> de la
+	  <emphasis>cadena de texto</emphasis> de entrada comenzando por el carácter de
+	  <emphasis>offset</emphasis> y conteniendo el número de caracteres indicado en
+	  <emphasis>length</emphasis>. El primer caracter de la
+<emphasis>cadena</emphasis> tiene un <emphasis>offset</emphasis> de <code>0</code>. Por ejemplo, si se usa la cadena anterior como entrada, la función
+	  <code>String Subset</code> devuelve la siguiente <emphasis>subcadena</emphasis> para un 
+	  <emphasis>offset</emphasis> de <code>4</code> y una
+	  <emphasis>length</emphasis> de <code>5</code>: 
+	  <code id="id8970720" display="block">
+	    quick
+	  </code>
+	</item>
+	<item><label>Match Pattern</label>
+	  
+
+	  Busca una <emphasis>expresión regular</emphasis> en la
+	  <emphasis>cadena de texto</emphasis> comenzando a partir de un
+	  <emphasis>offset</emphasis>, y 
+si encuentra una coincidencia, parte la <emphasis>cadena</emphasis> en tres subcadenas. Si no se encuentra una 
+coincidencia, <emphasis>match substring</emphasis> queda vacío
+	  y el <emphasis>offset past match</emphasis> a
+	  <m:math><m:cn>-1</m:cn></m:math>. Por ejemplo, usar una
+	  <emphasis>regular expression</emphasis> de <code>:</code>
+	  y la siguiente cadena como entrada:
+	  <code id="id5411520" display="block">
+	    VOLTS DC: +1.22863E+1;
+	  </code>
+	  La función <code>Match Pattern</code> devuelve <emphasis>before
+	  substring</emphasis> con <code>VOLTS DC</code>, <emphasis>match substring</emphasis> con <code>:</code>, y
+	  <emphasis>after substring</emphasis> con
+	  <code>+1.22863E+1;</code>, y el <emphasis>offset past
+	  match</emphasis> quedará con <code>9</code>.
+	</item>
+      </list>
+    </para>
+    <section id="s1">
+      <title>Conversión de valores numéricos a cadenas de texto con el instrumento virtual Express Build VI</title>
+      <para id="s1p1">Usar el <code>Build Text</code> Express VI para convertir valores numéricos en cadenas de texto. El <code>Build Text</code> Express VI, situado en la paleta <code>Functions&gt;&gt;Output</code>, encadena una cadena de entrada. Si la entrada no es una cadena de texto, este Express VI convierte la entrada en una cadena, basándose en la configuración del Express VI.
+      </para>
+      <para id="s1p2">Cuando se coloca un <code>Build Text</code> Express VI en el diagrama de bloques, aparece la caja de dialogo <link target-id="s1f1">Configure Build Text</link>. Esta caja de dialogo muestra el VI Express configurado para aceptar una entrada,
+	<code>voltage</code>, y cambiarla a un número fraccional con una precisión de 
+4 dígitos. La entrada se encadena al final de la cadena <code>Voltage is</code>. Se ha incluido un espacio al final de la cadena <code>Voltage is</code>.
+      </para>
+      <figure id="s1f1">
+	<media id="id4935607" alt=""><image src="../../media/ConfigBuildText.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="s1p3">Esta configuración produce el diagrama de bloques mostrado en la <link target-id="s1f2"/>. Se ha añadido la ventana que muestra el valor de la cadena de salida. El VI Express <code>Build Text</code>  encadena la entrada <code>Beginning Text</code>, en este caso el valor del <code>voltaje</code>, al final del texto configurado.
+</para>
+      <figure id="s1f2">
+	<media id="id4935679" alt=""><image src="../../media/BuildTextEx.png" mime-type="image/png"/></media>
+      </figure>
+    </section>
+    <section id="s2">
+      <title>Conversión de cadenas de texto a valores numéricos con la función Scan From String</title>
+      <para id="s2p1">La función <code>Scan From String</code> convierte una cadena conteniendo caracteres numéricos válidos, 
+tales como <code>0-9</code>,
+	<code>+</code>, <code>-</code>, <code>e</code>,
+	<code>E</code>, y punto decimal (<code>.</code>) a un valor numérico. Esta función explora la 
+<emphasis>cadena de entrada</emphasis> y la convierte de acuerdo al <emphasis>formato de la cadena</emphasis>. Usar esta función cuando se conoce el formato exacto del texto de entrada. Esta función puede escanear la <emphasis>cadena de entrada</emphasis> en varios tipos de datos, como Numericos o Booleanos, basándose en el formato de la cadena. Redimensionar la función para incrementar el número de <emphasis>salidas</emphasis>.</para>
+      <example id="s2ex1">
+	<para id="s2ex1p1">Por ejemplo, usar como <emphasis>formato de cadena %f</emphasis>, una <emphasis>posición inicial de búsqueda</emphasis> de <code>8</code>, y <code>VOLTS
+	  DC+1.28E+2</code> como <emphasis>cadena de entrada</emphasis> para obtener una salida de <code>128</code>, según se muestra en el diagrama de bloques mostrado en la <link target-id="s2ex1f1"/>. Cambiar la precisión de la salida cambiando la precisión del indicador.
+</para>
+	<figure id="s2ex1f1">
+	  <media id="id8205434" alt=""><image src="../../media/ScanStringEx.png" mime-type="image/png"/></media>
+	</figure>
+	<para id="s2ex1p2">En la <emphasis>cadena de formato</emphasis>, <code>%</code> comienza el especificador de formato y <code>f</code> indica un número en coma flotante con formato fraccional. Hacer clic con el botón derecho sobre la función y seleccionar <code>Edit Scan String</code> en el menú contextual para crear o editar un formato para la cadena. La caja de diálogo de <link target-id="s2ex1f2">Edit Scan
+	  String</link> muestra la configuración para una cadena de formato <code>%4f</code>.
+	</para>
+	<figure id="s2ex1f2">
+	  <media id="id8504501" alt=""><image src="../../media/editformatex.png" mime-type="image/png"/></media>
+	</figure>
+	<para id="s2ex1p3">Consultar la ayuda de LabVIEW para una mayor información acerca de la sintaxis de los especificadores de formato.
+</para>
+      </example>
+    </section>
+  </content> 
+</document>

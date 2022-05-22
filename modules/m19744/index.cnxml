@@ -1,0 +1,82 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Formateado de cadenas de texto para trabajar con Hojas de Cálculo</title>
+  <metadata>
+  <md:content-id>m19744</md:content-id><md:title>Formateado de cadenas de texto para trabajar con Hojas de Cálculo</md:title>
+  <md:abstract>En este módulo, se aprenderá a dar formato a ficheros de texto para usarlos en hojas de cálculo.</md:abstract>
+  <md:uuid>55c95091-9b66-4795-800c-0000b780e861</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">Para escribir datos en un fichero de hoja de cálculo, hay que formatear las cadenas como cadenas de hoja de cálculo, que son cadenas que incluyen delimitadores como por ejemplo tabuladores (tabs). En muchas hojas de cálculo, el carácter tab separa las columnas, y el carácter fin de línea separa las filas.
+    </para>
+    <note id="id45433067">Usar la constante fin de línea situada en la paleta <code>Functions&gt;&gt;All
+      Functions&gt;&gt;String</code> para asegurar la portabilidad de VIs entre diferentes plataformas. (<emphasis>Windows</emphasis>) La constante inserta un retorno de carro y un avance de línea. (<emphasis>Mac OS</emphasis>) La constante inserta un retorno de carro. (<emphasis>UNIX</emphasis>) La constante inserta un avance de línea.
+
+    </note>
+    <para id="p2">Usar el VI <code>Write To Spreadsheet File</code> o la función <code>Array To Spreadsheet String</code> para convertir un conjunto de números desde un gráfico, un diagrama o una adquisición en una cadena de hoja de cálculo. Si se quiere escribir números y textos para una hoja de cálculo o un procesador de textos, usar las funciones de String y las funciones de Array para formatear los datos y combinar las cadenas. Después escribir los datos en un fichero.
+</para>
+    <section id="s1">
+      <title>Format Into File</title>
+      <para id="s2p1">Usar la función <code>Format Into File</code> para dar formato a cadenas, numeros, caminos de acceso y datos Boleanos como texto y escribir el texto a un fichero. A menudo se puede usar esta función en vez de hacerlo por separado, dar formato a la cadena con la función <code>Format Into
+	String</code> o con el VI Express <code>Build Text</code> y escribir la cadena resultante con el VI <code>Write
+	Characters To File</code> o con la función <code>Write File</code>.
+
+      </para>
+      <para id="s2p2">Usar la función <code>Format Into File</code> para establecer el orden en que aparecen los datos en el fichero de texto. Sin embargo, no se puede usar esta función para añadir datos a un fichero o sobreescribir los datos existentes en un fichero. Para esas operaciones usar la función <code>Format Into String</code> junto con la función <code>Write File</code>. Se puede conectar un <code>refnum</code> o <code>path</code> al terminal <code>input
+	file</code> de la función <code>Format Into File</code>, o se puede dejar esta entrada sin conectar y mediante una caja de diálogo, se preguntará al usuario el nombre del fichero.
+
+      </para>
+      <para id="s2p3">En el diagrama de bloques mostrado en la <link target-id="s2f1"/>, el VI <code>Open/Create/Replace File</code> abre un fichero, y el <code>bucle For</code> se ejecuta 5 veces. La función <code>Format
+	Into File</code> convierte el número de repeticiones y el número aleatorio en cadenas de texto y coloca los caracteres tabulador y fin de línea en las posiciones correctas para crear 2 columnas y una fila en formato de hoja de calculo. Después que el bucle completa las 5 repeticiones, el fichero se cierra, y el VI chequea la condición de error.
+
+
+      </para>
+      <figure id="s2f1">
+	<media id="id44728325" alt=""><image src="../../media/frmtspreadstrg.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="s2p4">Este VI crea este fichero de texto, en el que una flecha (→)
+	indica un tabulador, y el símbolo de fin de párrafo (¶) indica un carácter de final de línea.
+	<code id="id45435554" display="block">
+	  0→ 0.798141¶
+	  1→ 0.659364¶
+	  2→ 0.581409¶
+	  3→ 0.526433¶
+	  4→ 0.171062¶
+	</code>
+      </para>
+      <para id="s2p5">Se puede abrir el fichero de texto anterior en una aplicación de hoja de cálculo para visualizarla como se muestra a continuación en la <link target-id="s2f2"/>.
+      </para>
+      <figure id="s2f2">
+	<media id="id47358612" alt=""><image src="../../media/frmtspreadstrgxls.png" mime-type="image/png"/></media>
+      </figure>
+    </section>
+    <section id="s3">
+      <title>Escribir un fichero de datos de LabVIEW</title>
+      <para id="s3p1">En el diagrama de bloques mostrado en la <link target-id="s3f1"/>, el VI Express <code>Write LabVIEW Measurement File</code> incluye las funciones abrir, escribir, cerrar y gestión de errores. También se encarga del formateado de la cadena de texto con tabuladores o delimitado por comas. La función <code>Merge Signals</code> combina el contaje de repetición del bucle y el número aleatorio en un tipo de datos dinámico.
+      </para>
+      <figure id="s3f1">
+	<media id="id44696790" alt=""><image src="../../media/frmtspreadstrg2.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="s3p2">La caja de diálogo en la <link target-id="s3f2"/> muestra la configuración para el VI Express <code>Write LabVIEW Measurement File</code>.
+      </para>
+      <figure id="s3f2">
+	<media id="id45473862" alt=""><image src="../../media/formatlvm.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="s3p3">Este VI crea un fichero <code>.lvm</code> que se puede abrir con una hoja de cálculo. La <link target-id="s3f3"/> muestra un ejemplo de la hoja de cálculo creada por el VI Express <code>Write LabVIEW Measurement File</code>, haciendo uso de la configuración mostrada anteriormente.
+
+      </para>
+      <figure id="s3f3">
+	<media id="id47360183" alt=""><image src="../../media/frmtspreadstrgxls2.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="s3p4">Consultar el módulo <link document="m12258">Adquisición de datos y formas de onda (Data Acquisition and Waveforms)</link>, para obtener más información de los instrumentos virtuales Express <code>Write
+	LabVIEW Measurement File</code> y <code>Read LabVIEW
+	Measurement File</code>.
+
+      </para>
+    </section>
+
+
+
+  </content>
+  
+</document>

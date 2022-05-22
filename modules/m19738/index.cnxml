@@ -1,0 +1,87 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VIs y funciones para trabajar con ficheros</title>
+  <metadata>
+  <md:content-id>m19738</md:content-id><md:title>VIs y funciones para trabajar con ficheros</md:title>
+  <md:abstract>En este módulo, se aprenderá a realizar operaciones de lectura desde y escritura en ficheros.</md:abstract>
+  <md:uuid>3ecc5396-a3c3-44af-87e3-3a42cf59e41a</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">Las operaciones de entrada/salida con ficheros transfieren datos desde y hacia los ficheros. Se van a usar los VIs y las funciones disponibles en la paleta <code>Functions&gt;&gt;All
+	Functions&gt;&gt;File I/O</code> para gestionar todos los aspectos de entrada y salida con ficheros, incluyendo los siguientes:
+      <list id="p1l1">
+	<item>
+	  Apertura y cierre de ficheros de datos
+	</item>
+	<item>
+	  Leer datos desde y escribir datos en ficheros
+	</item>
+	<item>
+	  Leer desde y escribir en ficheros con formato de hoja de cálculo
+	</item>
+	<item>
+	  Mover y renombrar ficheros y directorios
+	</item>
+	<item>
+	  Cambiar las características de los ficheros
+	</item>
+	<item>
+	  Crear, modificar y leer ficheros de configuración
+	</item>
+      </list>
+    </para>
+    <section id="s1">
+      <title>VIs para File I/O</title>
+      <para id="s1p1">La paleta File I/O está dividida en 4 tipos de operaciones: alto nivel, bajo nivel, avanzado y express.
+</para>
+      <section id="s1s1">
+	<title> VIs de alto nivel para File I/O</title>
+	<para id="s1s1p1">Usar los VIs File I/O de alto nivel situados en la fila superior de la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;File I/O</code>
+	  para ejecutar las tareas habituales de I/O. Consulta la sección
+	  <link document="m12256">High-Level File I/O VIs</link> para obtener más información sobre los instrumentos virtuales para entrada y salida con ficheros.</para>
+	<para id="s1s1p2">Se puede ahorrar tiempo y esfuerzo de programación usando los VIs de alto nivel para escribir y leer desde ficheros. Los VIs de alto nivel ejecutan operaciones de lectura y escritura, además de abrir y cerrar el fichero. Si ocurriera un error, los Vis de alto nivel muestran una caja de dialogo que describe el error. Se puede elegir entre detener la ejecución o seguir. Sin embargo, dado que los VIs de alto nivel, encapsulan por completo la operación con el fichero en un VI, son difíciles de adaptar a cualquier otro uso diferente al indicado. Usar VIs de bajo nivel para tareas más específicas.</para>
+      </section>
+      <section id="s1s2">
+	<title> VIs y funciones de bajo nivel y avanzadas para File I/O</title>
+	<para id="s1s2p1">Usar los VIs y las funciones File I/O de bajo nivel situados en la fila intermedia de la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;File
+	    I/O</code> y las funciones Advanced File I/O situadas en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;File
+	    I/O&gt;&gt;Advanced File Functions</code> para controlar cada una de las operaciones de entrada/salida de ficheros de manera individual.</para>
+	<para id="s1s2p2">Usar las funciones más importantes de bajo nivel para crear o abrir un fichero, escribir datos en o leer datos desde el fichero y cerrar el fichero. Los VIs y las funciones de bajo nivel pueden gestionar la mayoría de las necesidades de entrada/salida de ficheros. Consultar el LabVIEW Basis II: Development Course Manual para una información más detallada sobre las funciones avanzadas de entrada/salida de ficheros.</para>
+      </section>
+      <section id="s1s3">
+	<title>VIs Express para File I/O</title>
+	<para id="s1s3p1">Los VIs Express en la paleta <code>File I/O</code> incluyen los VI Express <code>Read LabVIEW Measurement File</code> y el <code>Write LabVIEW Measurement File</code>. El fichero de datos de medida de LabVIEW (<code>.lvm</code>) es un fichero de texto delimitado por tabs que se puede abrir con una hoja de calculo o un editor de texto. Además de los datos que un Express VI genera, el fichero .lvm incluye información sobre los datos, tales como la fecha y la hora en que fueron generados.
+</para>
+	<para id="s1s3p2">Consulta la sección <link document="m12266">Data Acquisition and
+	  Waveforms</link>, para obtener más información sobre los instrumentos virtuales File I/O Express.</para>
+      </section>
+    </section>
+    <section id="s2">
+      <title>El directorio LabVIEW Data</title>
+      <para id="s2p1"><media id="id20064826" alt=""><image src="../../media/dddIcon.png" id="s2f1" mime-type="image/png"/></media>
+Usar el directorio por defecto LabVIEW Data para almacenar los ficheros de datos que genera LabViEW, tales como los ficheros <code>.lvm</code> y <code>.txt</code> LabVIEW crea el directorio <code>LabVIEW Data</code> en el mismo directorio en que se encuentra el sistema operativo para facilitar organizar y encontrar los ficheros de datos que LabVIEW genera. El VI Express <code>Write LabVIEW Measurement File</code> almacena los ficheros <code>.lvm</code> que genera en ese directorio y el instrumento virtual Express <code>Read LabVIEW
+	Measurement File</code> lee desde ese directorio. La constante <code>Default Data Directory</code>, y la propiedad Default Data Directory también devuelven el directorio <code>LabVIEW Data</code> por defecto.
+     </para>
+      <para id="s2p2">Seleccionar  <code>Tools&gt;&gt;Options</code> y seleccionar
+	<code>Paths</code> en el menú superior que se despliega para especificar un directorio de datos diferente. El directorio de datos por defecto difiere del directorio por defecto, que es el directorio que hay que especificar para los nuevos VIs, controles de usuario, plantillas VI, u otros documentos LabVIEW que vayan a ser creados.
+      </para>
+    </section>
+    <section id="s3">
+      <title>Operaciones básicas de I/O</title>
+      <para id="s3p1">Una operación típica de entrada/salida implica el siguiente proceso:
+	<list id="s3p1l1" list-type="enumerated"><item>
+	    Crear o abrir un fichero. Indicar donde reside un fichero existente o donde se quiere crear un nuevo fichero, especificando un camino o respondiendo a una caja de diálogo para dirigir a LabVIEW hasta la ubicación del fichero. Después que el fichero se abre, se representa al fichero mediante un numero de referencia, o <emphasis>refnum</emphasis>. Este es un identificador único para un objeto, como puede ser un fichero, un dispositivo o una conexión de red.
+	  </item>
+	  <item>
+	    Leer desde o escribir en el fichero.
+	  </item>
+	  <item>
+	    Cerrar el fichero.
+	  </item>
+	</list>
+      </para>
+    </section>
+
+  </content>
+  
+</document>

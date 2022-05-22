@@ -1,0 +1,53 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VI Registro de temperatura y representación de los datos</title>
+  <metadata>
+  <md:content-id>m19746</md:content-id><md:title>VI Registro de temperatura y representación de los datos</md:title>
+  <md:abstract>En este ejercicio, se aplicarán los conocimientos adquiridos sobre estructuras, registros de desplazamiento, diagramas para formas de onda, arrays, gráficos, entrada y salida con ficheros, etc.</md:abstract>
+  <md:uuid>a57f8b3b-139f-40b3-b75c-44bbc5056ce8</md:uuid>
+</metadata>
+
+<content>
+    <exercise id="e1">
+      <problem id="id17255358">
+	<list id="l1" list-type="enumerated"><item>
+Construir un Instrumento Virtual para ejecutar las siguientes tareas:
+	    <list id="l1l1" list-type="enumerated"><item>
+Tomar una muestra de temperatura cada segundo hasta que se detenga la ejecución o se produzca un error.
+	      </item>
+	      <item>
+Visualizar la temperatura actual y la promediada de las 3 últimas medidas en un waveform chart.
+	      </item>
+	      <item>
+Si la temperatura excede un límite determinado, encender un diodo LED.
+	      </item>
+	      <item>
+Después de cada medida, registrar la fecha, la hora, incluyendo los segundos, la temperatura, la media de las 3 últimas medidas de temperatura y un mensaje de una palabra, describiendo si la temperatura es normal o supera el límite. Registrar los datos, de tal manera que cada elemento aparezca en una columna de la hoja de cálculo como se muestra en la <link target-id="l1l1f1"/>.
+		<figure id="l1l1f1">
+		  <media id="id20772695" alt=""><image src="../../media/tempappxls.png" mime-type="image/png"/></media>
+		</figure>
+	      </item>
+	      <item id="item5">
+Una vez finalizada la toma de muestras, plotear los valores de temperatura leídos y la curva que mejor se ajuste en un gráfico XY y mostrar las temperaturas media, máxima y mínima.
+		<note id="id16894229" type="tip">Comenzar con el <link document="m12262">VI Temperature Logger</link>. Para completar <link target-id="item5">el ejercicio</link> usar partes del Instrumento Virtual <link document="m12238">Análisis de temperatura</link>.
+		</note>
+		<note id="id20559794" type="tip">El VI Express <code>Build Text</code> está limitado a 8 entradas. Usar varios VIs Express <code>Build Text</code> o usar la función <code>Format into
+		  String</code>. También se podría construir los delimitadores en la cadena de formato para necesitar menos entradas.
+		</note>
+El panel frontal debiera ser similar al de la  <link target-id="l1l1f2"/>.
+		<figure id="l1l1f2">
+		  <media id="id18801649" alt=""><image src="../../media/tempapp.png" mime-type="image/png"/></media>
+		</figure>
+	      </item>
+	    </list>
+	  </item>
+	  <item>
+Salvar el VI como <code>Temperature Application.vi</code> en el directorio <code>C:\Exercises\LabVIEW Basics I</code>.
+	  </item>
+	</list>
+      </problem>
+    </exercise>
+
+
+  </content>
+  
+</document>

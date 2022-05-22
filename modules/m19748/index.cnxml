@@ -1,0 +1,62 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Ejercicios adicionales para cadenas de texto y Ficheros de entrada y salida</title>
+  <metadata>
+  <md:content-id>m19748</md:content-id><md:title>Ejercicios adicionales para cadenas de texto y Ficheros de entrada y salida</md:title>
+  <md:abstract/>
+  <md:uuid>14af2d13-169b-491b-bb82-18b4ed6e4ccd</md:uuid>
+</metadata>
+
+<content>
+    <exercise id="e1"><problem id="id17188492">
+	<para id="e1p1">Construir un instrumento virtual que genere un array de 2 dimensiones con
+	  <m:math>
+	    <m:apply>
+	      <m:cartesianproduct/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>3</m:cn>
+		<m:ci> filas</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:cn>100</m:cn>
+		<m:ci> columnas</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> de números aleatorios y escriba los datos transpuestos en una hoja de calculo. Añade un encabezamiento en cada columna. Usar los VIs de alto nivel de File I/O  situados en la paleta File I/O.
+	</para>
+	<note id="id3839301" type="tip">Usar el VI <code>Write Characters To File</code> para escribir el encabezado y el Write To Spreadsheet File VI para escribir los datos numéricos en el mismo fichero.
+	</note>
+	<para id="e1p2">
+Salvar el instrumento virtual como <code>More Spreadsheets.vi</code> en el directorio	<code>C:\Exercises\LabVIEW Basics I</code>.
+	</para>
+      </problem>
+    </exercise>
+    <exercise id="e2">
+      <problem id="id3452519">
+	<para id="e2p1">Construir un VI que convierta cadenas de hoja de calculo delimitadas por tabuladores a cadenas de hoja de calculo delimitadas por comas, es decir, cadenas de hoja de calculo con columnas separadas por comas y filas separadas por caracteres end of line. Visualiza en el panel frontal ambas cadenas, la delimitada por tabuladores y la delimitada por comas.
+
+</para>
+	<note id="id24398194" type="tip">Usar la función <code>Search and Replace String</code>.
+</note>
+	<para id="e2p2">Salvar el instrumento virtual como <code>Spreadsheet Converter.vi</code> en el directorio <code>C:\Exercises\LabVIEW Basics I</code>.
+
+</para>
+      </problem>
+    </exercise>
+    <exercise id="e3">
+      <problem id="id19211223">
+	<para id="e3p1">Modificar el instrumento virtual <link document="m12262">Temperature Logger VI</link> para que la aplicación no cree un nuevo fichero cada vez que se ejecuta. Añadir los datos al final del fichero existente <code>temp.dat</code> que fue creado por el VI <code>Temperature Logger</code>. Ejecutar el instrumento virtual varias veces y usar un de procesador de texto para comprobar que el instrumento virtual añade nuevas lecturas de temperatura.
+
+</para>
+	<note id="id6442566" type="tip">Borrar la función <code>Format Into File</code> y sustituirla con las funciones <code>Format Into String</code> y <code>Write File</code>. Usar los parámetros <code>pos
+	  mode</code> y <code>pos offset</code> de la función <code>Write File</code> para mover la marca de fichero actual.
+
+</note>
+	<para id="e3p2">Seleccionar <code>File&gt;&gt;Save As</code> para salvar el instrumento virtual como <code>Temperature Logger 2.vi</code> en el directorio <code>C:\Exercises\LabVIEW Basics I</code>.
+	</para>
+      </problem>
+    </exercise>
+
+  </content>
+  
+</document>

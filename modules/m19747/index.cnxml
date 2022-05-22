@@ -1,0 +1,53 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Resumen, pistas y trucos sobre cadenas de texto y ficheros de Entrada/Salida</title>
+  <metadata>
+  <md:content-id>m19747</md:content-id><md:title>Resumen, pistas y trucos sobre cadenas de texto y ficheros de Entrada/Salida</md:title>
+  <md:abstract/>
+  <md:uuid>b386b421-50f9-49e3-a382-0a88e5fa3f6a</md:uuid>
+</metadata>
+
+<content>
+    <list id="l1"><item>
+La cadenas de texto agrupan secuencias de caracteres ASCII. Usar el control y el indicador string para simular cajas de entrada de texto y etiquetas.
+      </item>
+      <item>
+Para minimizar el espacio que ocupa un objeto cadena, hacer clic con el botón derecho sobre el objeto y seleccionar <code>Show Scrollbar</code> en el menú que aparece.
+      </item>
+      <item>
+Usar las funciones de String situadas en la paleta <code>Functions&gt;&gt;All
+	Functions&gt;&gt;String</code> para editar y manipular cadenas de texto en el diagrama de bloques.
+      </item>
+      <item>
+Usar el VI Express <code>Build Text</code> para convertir un valor numérico en una cadena de texto.
+      </item>
+      <item>
+Usar la función <code>Scan From String</code> para convertir una cadena en un valor numérico.
+      </item>
+      <item>
+Hacer clic con el botón derecho sobre la función <code>Scan From String</code> y seleccionar <code>Edit Scan String</code> en el menú que aparece para editar o crear una cadena de formato.
+      </item>
+      <item>
+Usar los VIs y funciones para ficheros de Entrada/Salida para manejar todos los aspectos relativos a file I/O.
+      </item>
+      <item>
+Usar los VIs de I/O de alto nivel para ejecutar operaciones comunes de entrada/salida.
+      </item>
+      <item>
+Usar los VIs y las funciones de I/O de bajo nivel y las funciones Advanced File I/O situadas para controlar cada operación de entrada/salida de manera individual.
+      </item>
+      <item>
+Usar los VIs Express de File I/O para operaciones sencillas de captura de datos.
+      </item>
+      <item>
+Cuando se escribe en un fichero, éste se abre, crea, o sobreescribe, se escriben los datos, y se cierra el fichero. De igual manera, cuando se lee desde un fichero, se abre un fichero existente, se leen los datos y se cierra el fichero.
+      </item>
+      <item>
+Para acceder a un fichero mediante una caja de diálogo, dejar desconectado el file path en el instrumento virtual <code>Open/Create/Replace File</code>.
+      </item>
+      <item>
+Para escribir datos en un fichero de hoja de calculo, la cadena tiene que estar formateada como una cadena de hoja de calculo, es decir, una cadena que incluye delimitadores como pueden ser, por ejemplo, los tabuladores. Usar la función <code>Format Into File</code> para dar formato a datos de cadena, numéricos, caminos de almacenamiento de ficheros y variables Booleanas y escribir el texto en un fichero.	
+      </item>
+    </list>
+  </content>
+  
+</document>

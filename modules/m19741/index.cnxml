@@ -1,0 +1,103 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VIs y funciones de bajo nivel para File I/O</title>
+  <metadata>
+  <md:content-id>m19741</md:content-id><md:title>VIs y funciones de bajo nivel para File I/O</md:title>
+  <md:abstract>En este módulo, se aprenderá a usar los VIs y funciones de bajo nivel para la entrada/salida con ficheros.</md:abstract>
+  <md:uuid>47eb6044-c51d-43c4-ae32-6b49416b2074</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">Usar los siguientes VI y funciones de File I/O de bajo nivel para ejecutar tareas básicas de entrada/salida con ficheros:
+      <list id="p1l1" list-type="labeled-item"><item><label>Open/Create/Replace File</label>
+	  
+	    <media id="id18611401" alt=""><image src="../../media/OpenFileIcon-94e1.png" mime-type="image/png"/></media>
+Abre un fichero existente, crea un fichero nuevo, o sustituye un fichero existente, mediante un programa o interactivamente usando una caja de diálogo de fichero. Opcionalmente se puede especificar un mensaje de diálogo, nombre del fichero por defecto, camino de comienzo, o patrón de filtrado. Si file path está vacío, el VI visualiza una caja de diálogo desde la cual se puede seleccionar un fichero.
+	</item>
+	<item><label>Read File</label>
+	  
+	    <media id="id18610214" alt=""><image src="../../media/ReadFileIcon-8a07.png" mime-type="image/png"/></media>
+Lee datos desde el fichero abierto especificado por refnum y los devuelve en data. La lectura comienza en la marca del fichero actual o en una localización especificados por pos mode y pos offset. El modo en que se leen los datos, depende del formato del fichero especificado.
+</item>
+	<item><label>Write File</label>
+	  
+	    <media id="id16001967" alt=""><image src="../../media/WriteFileIcon-e402.png" mime-type="image/png"/></media>
+Escribe datos a un fichero abierto especificado por refnum. La escritura comienza en la posición especificada por pos mode y pos offset para los ficheros de secuencia de bytes y al final del fichero para los ficheros de datalog. Data, header y el formato del fichero especificado determinan la cantidad de datos escritos.
+	</item>
+	<item><label>Close File</label>
+	  
+	    <media id="id17232324" alt=""><image src="../../media/CloseFileIcon-c84b.png" mime-type="image/png"/></media>
+Cierra el fichero abierto indicado por refnum y devuelve el camino al fichero asociado con refnum. Error I/O funciona solamente para esta función, la cual cierra el fichero si ha ocurrido un error en una operación precedente. Esto asegura que los ficheros se cierran correctamente.
+El modo en que se leen los datos, depende del formato del fichero especificado.
+	</item>
+      </list>
+    </para>
+    <section id="s1">
+      <title>Gestión de errores</title>
+	<media id="id17229647" alt="" display="block"><image src="../../media/Error-f143.png" id="s1f1" mime-type="image/png"/></media>
+      <para id="s1p1">Los VIs y funciones de bajo nivel con ficheros de entrada/salida devuelven información de error. Conectar la informacion de error desde el comienzo del VI hasta el final. Incluir un VI gestor de errores, tal como el VI <link target-id="s1f1">Simple Error Handler</link> situado en la paleta <code>Time &amp; Dialog</code>, al final del VI para determinar si el VI se ejecutó sin errores. Usar los clusters de entrada y salida de error en cada VI que se use o construya para pasar información del error a través del VI.
+      </para>
+    </section>
+    <section id="s2">
+      <title>Guardar datos en un fichero nuevo o en uno ya existente</title>
+      <para id="s2p1">Se puede escribir cualquier tipo de datos a un fichero que se abra o se cree con los VIs y funciones con ficheros de entrada/salida. Si otros usuarios o aplicaciones necesitan acceder al fichero, los datos deberán ser escritos en el fichero en formato ASCII. Consultar el manual <cite><cite-title>LabVIEW Basics II: Development Course Manual</cite-title></cite> para obtener mayor información sobre escritura de datalogs de LabVIEW o ficheros binarios.
+
+     </para>
+      <para id="s2p2">Se puede acceder a los ficheros mediante programación o interactivamente mediante cajas de diálogo. Para acceder a fichero mediante caja de diálogo, no conectar <code>file path</code> en el VI <code>Open/Create/Replace File</code>. Sin embargo, se puede ahorrar tiempo conectando el nombre del camino por defecto al VI. La <link target-id="s2t1"/> explica como se organizan los nombres de fichero.
+
+</para>
+      <table id="s2t1" frame="all" summary="Especificación a usar para el camino que identifica a un fichero en las diferentes plataformas.">
+<tgroup cols="2" align="left" colsep="1" rowsep="1"><thead valign="top">
+	    <row>
+	      <entry align="center">Plataforma</entry>
+	      <entry align="center">Camino</entry>
+	    </row>
+	  </thead>
+	  <tbody valign="top">
+	    <row>
+	      <entry>Windows</entry>
+	      <entry>
+		Está formado por el nombre de la unidad, el carácter dos puntos, los nombres de los directorios separados por backslash y el nombre del fichero. Por ejemplo, <code>c:\testdata\test1.dat</code> es el camino para el fichero <code>test1.dat</code> en el directorio <code>testdata</code>.
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>UNIX</entry> 
+	      <entry>
+		En UNIX el camino se forma separando los nombres de directorio con el caracter slash y el nombre del fichero. Por ejemplo, <code>/home/testdata/test1.dat</code> es el camino para el fichero <code>test1.dat</code> en el directorio 
+		<code>testdata</code> en el directorio 
+		<code>/home</code>. Los nombres de fichero y los caminos diferencian mayúsculas y minúsculas.
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>Mac OS</entry>
+	      <entry>
+		Se forma con el nombre del volumen (el nombre del disco), el carácter dos puntos, los nombres de las carpetas separados por dos puntos y el nombre del fichero. Por ejemplo <code>Hard Disk:testdata:test1.dat</code> es el camino para el fichero llamado <code>test1.dat</code> en una carpeta llamada <code>testdata</code> en un disco llamado <code>Hard
+		Disk</code>.
+	      </entry>
+	    </row>
+	  </tbody>
+	
+
+</tgroup>
+</table>
+      <para id="s2p3">El diagrama de bloques mostrado en la <link target-id="s2f1"/> indica como escribir cadenas de datos
+a un fichero una vez que se ha especificado el nombre y el camino del fichero. Si el fichero ya existe, será reemplazado; en cualquier otro caso se creará un fichero nuevo.
+   </para>
+      <figure id="s2f1">
+	<media id="id14265042" alt=""><image src="../../media/pathnameex.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="s2p4">El VI <code>Open/Create/Replace File</code> abre el fichero
+	<code>test1.dat</code>. El VI también genera un <code>refnum</code> y un cluster de error.
+      </para>
+      <para id="s2p5">Cuando se abre un fichero, dispositivo o conexión de red, LabVIEW crea un <code>refnum</code> asociado con ese fichero, dispositivo o conexión de red. Todas las operaciones que se ejecuten sobre ficheros, dispositivos o conexiones de red abiertos usan <code>refnum</code> para identificar cada objeto.
+
+      </para>
+      <para id="s2p6">El cluster de error y <code>refnum</code> pasa en secuencia de un nodo al siguiente. Dado que un nodo no se puede ejecutar hasta que reciba todas sus entradas, pasando estos dos parametros se fija un orden de ejecución y se crea una dependencia de datos. El VI <code>Open/Create/Replace File</code> pasa el refnum y el cluster de error a la función <code>Write
+	File</code> que escribe los datos al disco. Cuando la función <code>Write
+	File</code> finaliza su ejecución pasa el refnum y el cluster de error a la función <code>Close File</code>, que cierra el fichero. El VI <code>Simple Error
+	Handler</code> examina el cluster de error y muestra una caja de diálogo si ocurriera un error. Si el error ocurre en un nodo, los nodos subsecuentes no se ejecutan, y el VI pasa el cluster de error al VI <code>Simple Error Handler</code>.
+   </para>
+    </section>
+
+  </content>
+  
+</document>

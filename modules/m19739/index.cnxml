@@ -1,0 +1,61 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VIs de alto nivel para File I/O</title>
+  <metadata>
+  <md:content-id>m19739</md:content-id><md:title>VIs de alto nivel para File I/O</md:title>
+  <md:abstract>En este módulo, se aprenderá a usar los VIs de alto nivel para entrada y salida con ficheros.</md:abstract>
+  <md:uuid>7331d90a-4204-4b4b-9b1e-2c9f30f10869</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">La mayoría de los VIs y funciones de File I/O ejecutan solo una fase de la operación de entrada/salida a fichero. Sin embargo, algunos VIs de File I/O de alto nivel diseñados para las operaciones de entrada/salida a ficheros ejecutan todos los pasos. Aunque esos VIs no son siempre tan eficientes como las funciones de bajo nivel, seguramente resultarán más fáciles de usar.    </para>
+    <para id="p2">Usar los VIs de File I/O de alto nivel situados en la fila superior de la paleta File I/O para ejecutar tareas habituales de entrada/salida, tales como escribir o leer los siguientes tipos de datos:
+      <list id="p2l1"><item>
+	  Caracteres a o desde ficheros de texto
+	</item>
+	<item>
+	  Líneas a o desde ficheros de texto
+	</item>
+	<item>
+	  Arrays de una o dos dimensiones de valores numéricos de simple precisión a o desde hojas de cálculo
+	</item>
+	<item>
+	  Arrays de una o dos dimensiones de valores numéricos de simple precisión o enteros con signo de 16 bits a o desde ficheros binarios
+	</item>
+      </list>
+    </para>
+    <para id="p3">Los VIs para entrada/salida de ficheros de alto nivel incluyen lo siguiente:
+      <list id="p3l1" list-type="labeled-item"><item><label>Escritura en una hoja de cálculo</label>
+	  
+
+	Convierte un array de una o dos dimensiones de números de precisión simple a cadena de texto y escribe la cadena a un nuevo fichero de secuencia de bytes o añade la cadena a un fichero existente. También puede transponer los datos. El VI abre o crea el fichero antes de escribir en él y lo cierra a continuación. Este VI permite crear un fichero de texto que se puede leer con la mayoría de aplicaciones de hoja de cálculo.
+	</item>
+	<item><label>Lectura desde una hoja de cálculo</label>
+	  
+
+
+	Lee un número determinado de líneas o filas desde un fichero comenzando en la posición indicada y convierte los datos a un array de 2 dimensiones de números de simple precisión. El VI abre el fichero antes de leer de él y lo cierra a continuación. Se puede usar este VI para leer un fichero de hoja de calculo salvado en formato texto.
+	</item>
+	<item><label>Escritura de caracteres a fichero</label>
+	  
+	  
+	  
+	Escribe una cadena de caracteres a un nuevo fichero de secuencia de bytes o añade la cadena a un fichero existente. El VI abre o crea el fichero antes de escribir en él y lo cierra a continuación.
+	</item>
+	<item><label>Lectura de caracteres desde fichero</label>
+	  
+
+	Lee un número determinado de caracteres desde un fichero de secuencia de bytes comenzando a partir de start of read offset. El VI abre el fichero antes de leer de él y lo cierra a continuación.
+	</item>
+	<item><label>Lectura de líneas desde fichero</label>
+	  
+
+	Lee un número determinado de líneas desde un fichero binario o de texto comenzando a partir de un carácter determinado. El VI abre el fichero antes de leer de él y lo cierra a continuación.	</item>
+	<item><label>Vis para ficheros binarios</label>
+	  
+
+	Estos VIs leen desde o escriben en fichero binarios. Los datos pueden ser enteros o números de simple precisión.	</item>
+      </list>
+    </para>
+  </content>
+  
+</document>

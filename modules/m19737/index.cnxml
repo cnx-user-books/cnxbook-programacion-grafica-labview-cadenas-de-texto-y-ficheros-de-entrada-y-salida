@@ -1,0 +1,142 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VI para crear una cadena de texto</title>
+  <metadata>
+  <md:content-id>m19737</md:content-id><md:title>VI para crear una cadena de texto</md:title>
+  <md:abstract>En este ejercicio se pretende usar las funciones Build String, Match Pattern, Scan from String, y String Length. Realizar los pasos indicados para construir un VI que convierta valores numéricos a cadenas de texto, que agrupe una cadena de texto junto con otras cadenas en una única cadena de texto, y que determine la longitud de una cadena de salida. Este instrumento virtual también busca un patrón en una cadena de texto y convierte los caracteres restantes en un valor numérico.</md:abstract>
+  <md:uuid>769d9709-a828-40b5-bd63-23ef69cfaf43</md:uuid>
+</metadata>
+
+<content>
+    <exercise id="e1">
+      <problem id="id6410373">
+	<section id="s1">
+	  <title>Panel Frontal</title>
+	  <list id="s1l1" list-type="enumerated"><item><!--needs para--> 
+	      <!--para--> 
+Abrir un diseño en blanco y construir el panel frontal mostrado en la <link target-id="s1l1f1"/>. No añadir etiquetas para los comentarios; estos se muestran expresamente como ayuda.	      
+	      <figure id="s1l1f1">
+		<media id="id6410437" alt=""><image src="../../media/buildstring.png" mime-type="image/png"/></media>
+	      </figure>
+	      <!--para-->
+
+
+Tener en cuenta las siguientes consideraciones para construir el panel frontal:
+	      <list id="s1l1l1"><item><!--needs para-->
+		  <!--para-->
+
+Hacer clic con el botón derecho sobre <code>String 2</code> y seleccionar '<code>\</code>' <code>Codes Display</code> en el menú desplegable. 		  <!--para-->
+		  El texto introducido en <code>String 2</code> es
+		  <code>Volts DC: +1.26E+1</code>. Como se muestra usando Codes Display en el panel frontal mostrado arriba, hay 2 espacios tras el caracter dos puntos (<code>\s\s</code>), y el texto finaliza con un retorno de carro
+		  (<code>\r\n</code>). También se podría ver un
+		  <code>\r</code> o un <code>\n</code> para el retorno de carro.
+		</item>
+		<item>
+Cambiar la representación de los indicadores <code>String Length</code> y <code>Offset Past Match</code> a entero con signo de 32 bits (I32).
+		</item>
+		<item>
+Después de introducir el texto en los controles, seleccionar <code>Operate&gt;&gt;Make Current Values Default</code> para fijar ese texto como los valores por defecto de esos controles.
+		</item>
+	      </list>
+	    </item>
+  </list>
+	</section>
+	<section id="s2">
+	  <title>Diagrama de Bloques</title>
+	  <list id="s2l1" list-type="enumerated"><item>
+	      Construir el Diagrama de Bloques mostrado en la <link target-id="s2l1f1"/>.
+	      <figure id="s2l1f1">
+		<media id="id6415314" alt=""><image src="../../media/buildstringbd.png" mime-type="image/png"/></media>
+	      </figure>
+	      <list id="s2l1l1" list-type="enumerated"><item>
+		    <media id="id6415341" alt=""><image src="../../media/BuildIcon-23b4.png" mime-type="image/png"/></media>
+
+Colocar en el diagrama de bloques el instrumento virtual <code>Build Text Express
+		  VI</code>, situado en la paleta <code>Functions&gt;&gt;Output</code>. Esta función convierte <code>Números</code> a una cadena de texto. Al colocar el VI express <code>Build Text</code> se muestra la caja de dialogo de configuración.
+		  <list id="s2l1l1l1" list-type="enumerated">
+		    <item>
+		      Escribir <code>%Header% %Number% %Trailer%</code> 
+en la caja de texto <code>Text with Variables in Percents</code> para crear tres variables. Las variables aparecen en la sección <code>Configure Variables</code>.
+		    </item>
+		    <item>
+		      Seleccionar <code>Number</code> en la sección
+		      <code>Variable</code>.
+		    </item>
+		    <item>
+
+En la sección <code>Variable Properties</code>, seleccionar la opcion <code>Number</code>, establecer el formato a <code>Format fractional
+		      number</code>. Marcar la casilla <code>Use specified precision</code> y fijar la <code>precisión</code> en <code>4</code>. Dejar las variables <code>Header</code> y <code>Trailer</code> con los valores por defecto.
+		    </item>
+		    <item>
+Hacer clic en el botón <code>OK</code> para cerrar la caja de dialogo.
+		    </item>
+		  </list>
+		</item>
+		<item>
+		    <media id="id6415550" alt=""><image src="../../media/strglengthicon.png" mime-type="image/png"/></media>
+
+
+Colocar en el diagrama de bloques la función <code>String
+		  Length</code>, situada en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;String</code>. Esta función devuelve el número de caracteres en <code>Result</code>.
+		</item>
+		<item><!--needs para-->
+		    <media id="id6415594" alt=""><image src="../../media/matchpaticon.png" mime-type="image/png"/></media>
+		  <!--para-->
+Colocar en el diagrama de bloques la función <code>Match
+		  Pattern</code>, situada en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;String</code>. Esta función busca el carácter dos puntos (<code>:</code>) en <code>String 2</code>. 
+		  <!--para-->
+
+Hacer clic con el botón derecho sobre la entrada <code>regular expression</code>, y seleccionar en el menú que aparece <code>Create&gt;&gt;Constant</code>, escribir el carácter dos puntos (<code>:</code>), y pulsar la tecla <code>&lt;Enter&gt;</code> en el teclado numérico. También se puede hacer clic en el botón <code>Enter</code> de la barra de herramientas para completar la entrada. No pulsar la tecla <code>&lt;Enter&gt;</code> en el teclado principal, porque en ese caso se introduce el carácter return en la cadena de búsqueda.
+		</item>
+		<item>
+		    <media id="id6415700" alt=""><image src="../../media/scanfromstrgicon.png" mime-type="image/png"/></media>
+
+Colocar en el diagrama de bloques la función <code>Scan From
+		  String</code>, situada en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;String</code>. Esta función convierte la cadena después del carácter dos puntos en un valor numérico.
+		</item>
+		<item>
+Completar el diagrama de bloques como se muestra en la <link target-id="s2l1f1"/>.
+		</item>
+</list>
+	    </item>
+	  </list>
+	</section>
+	<section id="s3">
+	  <title>Icono del Instrumento y Panel conector</title>
+	  <list id="s3l1" list-type="enumerated"><item>
+
+Visualizar el panel frontal y crear un icono y un panel conector, de tal modo que más tarde se pueda usar a lo largo del curso este Instrumento Virtual VI como un subVI. Tener como referencia la lección sobre <link document="m12204">programacion modular</link> para obtener más información sobre cómo crear iconos y paneles conector.
+	      <figure id="s3l1f1">
+		<media id="id6415808" alt=""><image src="../../media/createstringconpane.png" mime-type="image/png"/></media>
+	      </figure>
+	    </item>
+	    <item>
+Salvar el Instrumento Virtual VI como <code>Create String.vi</code> en el directorio <code>C:\Exercises\LabVIEW Basics I</code>. Este VI se usará más adelante en este curso.
+		    </item>
+	  </list>
+	</section>
+	<section id="s4">
+	  <title>Ejecución del VI</title>
+	  <list id="s4l1" list-type="enumerated"><item><!--needs para-->
+	      <!--para-->
+Cambiar los valores en los controles del panel frontal y ejecutar el VI. 
+	      <!--para-->
+El VI concatena <code>Header</code>,
+	      <code>Number</code>, y <code>Trailer</code> en una <code>cadena combinada</code> y muestra la longitud de la cadena. 
+	      <!--para-->
+
+El VI también busca el carácter dos puntos (<code>:</code>) en <code>String 2</code>, convierte los caracteres de la cadena que siguen al carácter dos puntos (<code>:</code>), los saca en <code>Number
+	      Out</code>, y muestra el índice al primer caracter después del carácter dos puntos (<code>:</code>) en <code>Offset Past
+	      Match</code>.
+	    </item>
+	    <item>
+Salvar y cerrar el VI.
+	    </item>
+	  </list>
+	</section>
+      </problem>
+    </exercise>
+
+
+  </content>
+  
+</document>

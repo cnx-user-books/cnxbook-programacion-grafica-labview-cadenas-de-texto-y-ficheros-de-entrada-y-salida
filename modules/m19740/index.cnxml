@@ -1,0 +1,150 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>VI ejemplo para trabajar con hojas de cálculo</title>
+  <metadata>
+  <md:content-id>m19740</md:content-id><md:title>VI ejemplo para trabajar con hojas de cálculo</md:title>
+  <md:abstract>En este ejercicio, se pretende salvar un array 2D en un fichero de texto para que una hoja de cálculo pueda acceder a los datos y visualizar dichos datos numéricos en una tabla. Completar los siguientes pasos para evaluar el funcionamiento de un VI que guarda arrays numéricos en un fichero en un formato accesible para una hoja de cálculo.</md:abstract>
+  <md:uuid>5207674a-e0f9-4d73-8fb3-37b82418ded1</md:uuid>
+</metadata>
+
+<content>
+    <exercise id="e1">
+      <problem id="id41948724">
+	<section id="s1">
+	  <title>Panel Frontal</title>
+	  <list id="s1l1" list-type="enumerated"><item>
+Abrir el VI ejemplo <code>Spreadsheet Example</code>, situado en el directorio <code>C:\Exercises\LabVIEW Basics I</code>. El panel frontal mostrado en la <link target-id="s1l1f1"/> ya está construido.
+	      <figure id="s1l1f1">
+		<media id="id41948795" alt=""><image src="../../media/spreadex.png" mime-type="image/png"/></media>
+	      </figure>
+	    </item>
+	  </list>
+	</section>
+	<section id="s2">
+	  <title>Ejecutar el VI</title>
+	  <list id="s2l1" list-type="enumerated"><item><!--needs para-->
+	      <!--para-->
+	      Ejecutar el VI.
+	      <!--para-->
+	      El VI genera un array de 2 dimensiones de 
+	      <m:math>
+		<m:apply>
+		  <m:cartesianproduct/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>128</m:cn>
+		    <m:ci> filas</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>3</m:cn>
+		    <m:ci> columnas</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>. La primera columna contiene los valores correspondientes a una señal senoidal, la segunda columna contiene los datos de una señal de ruido y la 3ª columna contiene datos de una señal cosenoidal. El VI dibuja cada columna en un grafico y muestra los datos en una tabla.
+	    </item>
+	    <item>
+	      Cuando se muestre la caja de dialogo <code>Choose file to write</code>, salvar el fichero como <code>wave.txt</code> en el directorio 
+	      <code>C:\Exercises\LabVIEW Basics I</code> y hacer clic en el botón 
+	      <code>OK</code>. Después se examinará este fichero.
+	    </item>
+	  </list>
+	</section>
+	<section id="s3">
+	  <title>Diagrama de Bloques</title>
+	  <list id="s3l1" list-type="enumerated"><item>
+Visualizar y examinar el <link target-id="s3l1f1">diagrama de bloques</link> para este VI.
+	      <figure id="s3l1f1">
+		<media id="id41912855" alt=""><image src="../../media/spreadexbd.png" mime-type="image/png"/></media>
+	      </figure>
+	      <list id="s3l1l1"><item>
+		    <media id="id41912880" alt=""><image src="../../media/sinepaticon.png" mime-type="image/png"/></media>
+		  El VI <code>Sine Pattern</code>
+		  situado en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;Analyze&gt;&gt;Signal Processing&gt;&gt;Signal
+		  Generation</code> devuelve un array numérico de 128 elementos conteniendo un patrón senoidal. La constante <code>90.0</code>, en el segundo VI <code>Sine Pattern</code>, especifica la fase de la señal patrón seno o del patrón coseno.
+		</item>
+		<item>
+		    <media id="id41912929" alt=""><image src="../../media/uniform.png" mime-type="image/png"/></media>
+		  El VI <code>Uniform White Noise</code>
+		  situado en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;Analyze&gt;&gt;Signal Processing&gt;&gt;Signal
+		  Generation</code> devuelve un array numérico de 128 elementos conteniendo un patrón de una señal de ruido. 
+		</item>
+		<item>
+		    <media id="id41912967" alt=""><image src="../../media/BuildArrayicon.png" mime-type="image/png"/></media>
+		  La función <code>Build Array</code>
+		  situado en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;Array</code> construye un array de 2 dimensiones para el array seno, el array ruido, y el array coseno, según se muestra en la <link target-id="s3l1l1f4"/>.
+		  <figure id="s3l1l1f4">
+		    <media id="id41913016" alt=""><image src="../../media/BuildArray.png" mime-type="image/png"/></media>
+		  </figure>
+		</item>
+		<item>
+		    <media id="id41913035" alt=""><image src="../../media/trans2daryicon.png" mime-type="image/png"/></media>
+		  La función <code>Transpose 2D
+		  Array</code> situada en la paleta <code>Functions&gt;&gt;All Functions&gt;&gt;Array</code> palette
+		 reordena los elementos del array de dos dimensiones tal que 
+		  <m:math>
+		    <m:set>
+		      <m:ci>i</m:ci>
+		      <m:ci>j</m:ci>
+		    </m:set>
+		  </m:math> se convierten en 
+		  <m:math>
+		    <m:set>
+		      <m:ci>j</m:ci>
+		      <m:ci>i</m:ci>
+		    </m:set>
+		  </m:math>, como se muestra en la <link target-id="s3l1l1f6"/>.
+		  <figure id="s3l1l1f6">
+		    <media id="id41913111" alt=""><image src="../../media/transarry.png" mime-type="image/png"/></media>
+		  </figure>
+		</item>
+		<item>
+		    <media id="id41913130" alt=""><image src="../../media/wrtspreadfileicon.png" mime-type="image/png"/></media>
+		  El VI <code>Write To Spreadsheet
+		  File</code> situado en la paleta <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;File I/O</code> da formato al array 2D en una cadena de hoja de cálculo y escribe la cadena a un fichero. La cadena tiene el formato mostrado en la 
+		  <link target-id="s3l1l1f8"/>, donde la flecha indica un tabulador y el símbolo de párrafo (¶) indica un carácter de fin de línea.
+		  <figure id="s3l1l1f8"><media id="id41913181" alt=""><image src="../../media/writespread.png" mime-type="image/png"/></media>
+		  </figure>
+		</item>
+		<item>
+		    <media id="id41913200" alt=""><image src="../../media/num2fracstrgicon.png" mime-type="image/png"/></media> La función <code>Number To
+		  Fractional String</code> situada en la paleta
+		  <code>Functions&gt;&gt;All
+		  Functions&gt;&gt;String&gt;&gt;String/Number Conversion</code>
+		  convierte un array de valores numéricos a un array de cadenas de texto tal como se muestra en la tabla.
+		</item>
+	      </list>
+	    </item>
+	    <item>
+	      Cerrar el VI. No salvar los cambios.
+	      <note id="id41913245">Este ejemplo solo almacena 3 arrays en el fichero. Para incluir más arrays, incrementar el número de entradas de la función <code>Build Array</code>.
+	      </note>
+	    </item>
+	  </list>
+	</section>
+	<section id="s4">
+	  <title>Opcional</title>
+	  <para id="s4p1">Abrir el fichero <code>wave.txt</code> con un editor de texto o una hoja de cálculo y observar su contenido.
+
+	  </para>
+	  <list id="s4l1" list-type="enumerated"><item>
+	      Ejecutar un editor de texto o una hoja de cálculo, tales como (<emphasis>Windows</emphasis>) Notepad, WordPad, UltraEdit, (<emphasis>Mac OS</emphasis>) SimpleText, o (<emphasis>UNIX</emphasis>) Text Editor.
+	    </item>
+	    <item>
+	      Abrir <code>wave.txt</code>. Los datos de la señal senoidal aparecen en la primera columna, los datos de la señal aleatoria en la segunda columna, y los datos correspondientes a la señal coseno en la tercera columna.
+	    </item>
+	    <item>
+	      Salir del editor o de la hoja de cálculo.
+	    </item>
+	  </list>
+	</section>
+      </problem>
+    </exercise>
+
+
+  </content> 
+
+</document>
